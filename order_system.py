@@ -47,11 +47,13 @@ def place_order(menu):
   
         order_choice = input('Would you like to keep ordering? "n" or "N" to quit: ')
 
-        if order_choice.lower == "n":
+        print(order_choice)
+
+        if order_choice.lower() == "n":
             # Write a print statement that thanks the customer for their order
             print('Thank you for your order!')
-
-            prices_list = [item["Item price"]*item["quantity"] for item in order]
+            print(order)
+            prices_list = [item["Price"] * int(item["Quantity"]) for item in order]
 
             order_total = round(sum(prices_list),2)
 
@@ -128,16 +130,17 @@ def print_itemized_receipt(receipt):
                     and quantity ordered.
     """
     # Uncomment the following line if you need to check the structure of the receipt
-    #print(receipt)
+    # print(receipt)
 
-    # TODO: Loop through the items in the customer's receipt
-
-        # TODO Store the dictionary items as variables
-
-
-        # TODO: Print the receipt line using the print_receipt_line function
-        # TODO: Send the item name, price, and quantity as separate arguments
-
+    # Loop through the items in the customer's receipt
+    for item in receipt:
+        # Store the dictionary items as variables
+        item_name = item["Item name"]
+        price =  item["Price"]
+        quantity = item["Quantity"]
+        # Print the receipt line using the print_receipt_line function
+        # Send the item name, price, and quantity as separate arguments
+        print_receipt_line(item_name,price,quantity)
 
 ##################################################
 #  STARTER CODE
